@@ -1,0 +1,44 @@
+
+
+<% @nice_people.each do |person| %>
+  <%= person.greet @nice_people.sample, "HOLLA" %>
+<% end %>
+
+<p>
+  <span class="city"><%= link_to "Home", root_path %></span>
+<% NicePerson.pluck(:city).uniq.each do |city| %>
+  <span class="city"><%= link_to city, root_path(city: city) %></span>
+<% end %>
+</p>
+
+<h1>Listing nice_people</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>City</th>
+      <th>Hair</th>
+      <th>Age</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nice_people.each do |nice_person| %>
+      <tr>
+        <td><%= nice_person.name %></td>
+        <td><%= link_to nice_person.city, root_path(city: nice_person.city) %></td>
+        <td><%= nice_person.hair %></td>
+        <td><%= nice_person.age %></td>
+        <td><%= link_to 'Show', nice_person %></td>
+        <td><%= link_to 'Edit', edit_nice_person_path(nice_person) %></td>
+        <td><%= link_to 'Destroy', nice_person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nice person', new_nice_person_path %>

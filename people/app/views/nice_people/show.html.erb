@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @nice_person.name %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @nice_person.city %>
+</p>
+
+<p>
+  <strong>Hair:</strong>
+  <%= @nice_person.hair %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @nice_person.age %>
+</p>
+
+<%= link_to 'Edit', edit_nice_person_path(@nice_person) %> |
+<%= link_to 'Back', nice_people_path %>
